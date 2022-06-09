@@ -32,6 +32,6 @@ public class Member {
 	@Column(length=100, nullable=false)
 	private String phoneNumber;
 
-	@Column(length=200, nullable=false)
+	@Column(length=200, nullable=true)
 	private long coin;
 }
