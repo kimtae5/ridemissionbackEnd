@@ -6,27 +6,39 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.kt5.ridemission.entity.Member;
+import com.kt5.ridemission.model.Bike;
+import com.kt5.ridemission.model.Member;
 import com.kt5.ridemission.persistence.RidingRepository;
 
 @SpringBootTest
 public class RidingRepositoryTest {
 	@Autowired
-	RidingRepository ridingRepository;
+	private RidingRepository ridingRepository;
 
-	@Test
+	//@Test
+	public void r() {
+		System.out.println(ridingRepository);
+	}
+	
+	//@Test
 	public void insertMember() {
-		IntStream.rangeClosed(1, 300).forEach(i -> {
-			//데이터 생성
-			Member member = Member.builder()
-					.nickname("nickname..." + i)
-					.password("password..." + i)
-					.local("local..." + i)
-					.phoneNumber("phoneNumber..." + i)
-					.coin(i)
-					.build();
-			//데이터 삽입
+		IntStream.rangeClosed(1, 100).forEach(i -> {
+			Member member = Member.builder().nickName("to" + i + "@kt5.com").password("1111")
+					.local("사용자" + i).phoneNumber("010" + i).coin(i*1000).build();
 			ridingRepository.save(member);
 		});
-	}
+	};
+	
+	@Test
+		public void insertbike() {
+			IntStream.rangeClosed(1, 100).forEach(i -> {
+				Member member = Member.builder().nickName("to" + i + "@kt5.com").
+				Bike bike = Bike.builder().nickName(member.getNickName()).bikeName("1111")
+						.local("사용자" + i).phoneNumber("010" + i).coin(i*1000).build();
+				ridingRepository.save(bike);
+			});
+		};
+	
 }
+	
+
