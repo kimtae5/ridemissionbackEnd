@@ -18,18 +18,20 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "member")
+@ToString(exclude = "nickName")
 
 
 public class BikeImage extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long bino;
+	private Long bIno;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Member nickName;
 	
+	private String bIuuid;
 	private String bikeImage;
+	private String bIpath;
 	
 
 }

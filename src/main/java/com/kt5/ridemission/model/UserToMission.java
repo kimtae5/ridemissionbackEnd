@@ -18,17 +18,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "nickName")
-
-public class Bike extends BaseEntity{
+@ToString(exclude = {"nickName", "mainno"})
+public class UserToMission extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long bno;
+	private Long uTMno;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Member nickName;
 	
-	private String bikeName;
-	
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	private MainMissionBoard mainno;
 }

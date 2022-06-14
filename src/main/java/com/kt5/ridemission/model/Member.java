@@ -1,6 +1,5 @@
 package com.kt5.ridemission.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,18 +19,13 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Member extends BaseEntity{
 	@Id
-	@Column(length=100, nullable=false)
 	private String nickName;
 	
-	@Column(length=200, nullable=false)
 	private String password;
 	
-	@Column(length=100, nullable=false)
 	private String local;
 	
-	@Column(length=100, nullable=false)
 	private String phoneNumber;
 
-	@Column(length=200, nullable=true)
 	private long coin;
 }
