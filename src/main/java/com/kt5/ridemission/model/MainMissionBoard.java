@@ -1,6 +1,7 @@
 package com.kt5.ridemission.model;
 
 import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class MainMissionBoard extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long mainno;
-	
+
 	private String missionTitle;
 	private String missionLocation;
 	private Long missionPeople;

@@ -23,7 +23,7 @@ abstract public class BaseEntity {
 	private LocalDateTime regdate;
 	
 	@LastModifiedDate
-	@Column(name = "moddate", updatable = false)
+	@Column(name = "moddate")
 	private LocalDateTime moddate;
 
 }

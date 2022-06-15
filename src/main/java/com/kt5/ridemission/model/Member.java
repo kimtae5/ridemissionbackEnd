@@ -12,11 +12,11 @@ import lombok.ToString;
 
 @Entity
 @Table(name="tbl_member")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @ToString
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Member extends BaseEntity{
 	@Id
 	private String nickName;

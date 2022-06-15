@@ -10,10 +10,8 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kt5.ridemission.model.Bike;
-import com.kt5.ridemission.model.BikeImage;
 import com.kt5.ridemission.model.MainMissionBoard;
 import com.kt5.ridemission.model.Member;
-import com.kt5.ridemission.persistence.BikeImageRepository;
 import com.kt5.ridemission.persistence.BikeRepository;
 import com.kt5.ridemission.persistence.MainMissionBoardRepository;
 import com.kt5.ridemission.persistence.MemberRepository;
@@ -25,9 +23,6 @@ public class RidingRepositoryTest {
 	
 	@Autowired
 	private BikeRepository bikeRepository;
-
-	@Autowired
-	private BikeImageRepository bikeImageRepository;
 
 	@Autowired
 	private MainMissionBoardRepository mainMissionBoardRepository;
@@ -51,27 +46,13 @@ public class RidingRepositoryTest {
 			Member member = Member.builder().nickName(nickName).build();
 			
 			Bike bike = Bike.builder().nickName(member).bikeName("bikename..."+ i)
-					.build();
+					.bikeDescription("bikeDescription..." + i).bikeImageUrl("bikeImageUrl..."+ i).build();
 			bikeRepository.save(bike);
 		});
 	}
 	
-	//@Test
-	@Transactional
-	@Commit
-	public void insertBikeImage() {
-		IntStream.rangeClosed(1, 100).forEach(i -> {
-			String nickName = "to" + i + "@kt5.com";
-			
-			Member member = Member.builder().nickName(nickName).build();
-			
-			BikeImage bikeImage = BikeImage.builder().nickName(member).bikeImage("bikeImage..."+ i)
-					.build();
-			bikeImageRepository.save(bikeImage);
-		});
-	}
 	
-	@Test
+	//@Test
 	@Transactional
 	@Commit
 	public void insertMainMissionBoard() {

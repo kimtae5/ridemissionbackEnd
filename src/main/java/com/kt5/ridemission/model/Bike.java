@@ -1,5 +1,6 @@
 package com.kt5.ridemission.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,13 @@ public class Bike extends BaseEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Member nickName;
 	
+	@Column(length =100)
 	private String bikeName;
 	
-
+	@Column(length =200)
+	private String bikeDescription;
+	
+	@Column(length =255)
+	private String bikeImageUrl;
+	
 }
