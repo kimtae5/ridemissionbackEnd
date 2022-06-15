@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kt5.ridemission.model.Bike;
 import com.kt5.ridemission.model.MainMissionBoard;
 import com.kt5.ridemission.model.Member;
+import com.kt5.ridemission.model.Reply;
 import com.kt5.ridemission.persistence.BikeRepository;
 import com.kt5.ridemission.persistence.MainMissionBoardRepository;
 import com.kt5.ridemission.persistence.MemberRepository;
+import com.kt5.ridemission.persistence.ReplyRepository;
 
 @SpringBootTest
 public class RidingRepositoryTest {
@@ -26,6 +28,9 @@ public class RidingRepositoryTest {
 
 	@Autowired
 	private MainMissionBoardRepository mainMissionBoardRepository;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
 	
 	//@Test
 	public void insertMember() {
@@ -64,6 +69,23 @@ public class RidingRepositoryTest {
 			mainMissionBoardRepository.save(mmb);
 		});
 	}
+	
+	@Test
+	@Transactional
+	@Commit
+	public void insertreply() {
+		IntStream.rangeClosed(1, 100).forEach(i -> {
+			Long mainno = (long) i;
+			
+			MainMissionBoard mmb = MainMissionBoard.builder().mainno(mainno).build();
+			
+			Reply reply = Reply.builder().mainno(mmb).replycontent("replycontent..."+ i)
+					.writer("writer..." + i).build();
+			replyRepository.save(reply);
+		});
+	}
+
+	
 	
 }
 	
