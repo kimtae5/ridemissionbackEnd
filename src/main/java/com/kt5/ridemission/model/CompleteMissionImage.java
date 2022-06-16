@@ -1,5 +1,6 @@
 package com.kt5.ridemission.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,11 +25,9 @@ public class CompleteMissionImage extends BaseEntity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long cMIno;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private MainMissionBoard mainno;
 	
-	private String cMIuuid;
-	private String cMIImage;
-	private String cMIpath;
+	private String completeMissionImagePath;
 	
 }

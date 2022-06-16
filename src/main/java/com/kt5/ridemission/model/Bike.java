@@ -1,5 +1,6 @@
 package com.kt5.ridemission.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +27,7 @@ public class Bike extends BaseEntity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long bno;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Member nickName;
 	
 	@Column(length =100)

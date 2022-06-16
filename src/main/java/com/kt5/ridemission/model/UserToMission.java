@@ -1,5 +1,6 @@
 package com.kt5.ridemission.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,9 +25,9 @@ public class UserToMission extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long uTMno;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Member nickName;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private MainMissionBoard mainno;
 }

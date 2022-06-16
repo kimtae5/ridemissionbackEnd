@@ -1,5 +1,6 @@
 package com.kt5.ridemission.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Reply extends BaseEntity{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long rno;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private MainMissionBoard mainno;
 	
 	private String replycontent;
