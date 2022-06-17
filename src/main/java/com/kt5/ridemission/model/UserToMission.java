@@ -25,9 +25,9 @@ public class UserToMission extends BaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long uTMno;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Member nickName;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private MainMissionBoard mainno;
 }

@@ -82,7 +82,7 @@ public class RidingRepositoryTest {
 	@Transactional
 	@Commit
 	public void insertBike() {
-		IntStream.rangeClosed(1, 100).forEach(i -> {
+		IntStream.rangeClosed(1, 5).forEach(i -> {
 			String nickName = "to" + i + "@kt5.com";
 			
 			Member member = Member.builder().nickName(nickName).build();
@@ -92,6 +92,42 @@ public class RidingRepositoryTest {
 			bikeRepository.save(bike);
 		});
 	}
+	
+	//@Test
+	public void testGetBike() {
+		Optional<Bike> optional = bikeRepository.findById(7L);
+		System.out.println(optional.isPresent() ? optional.get() : "존재하지않는 데이터입니다." );
+	}
+	
+	//데이터 수정
+	//@Test
+	public void testUpdateBike() {
+		Bike bike = Bike.builder().bno(2L).bikeName("harley1").bikeImageUrl("harley1.jpg")
+				.bikeDescription("떨림좋음1").build();
+		bikeRepository.save(bike);
+	}
+	
+	//데이터 삭제
+	//@Test
+	public void testDeleteBike() {
+		Bike bike = Bike.builder().bno(6L).build();
+		bikeRepository.delete(bike);
+	}
+	
+	//지역으로 데이터 조회
+	//@Test
+	public void testFindBike() {
+		String name = "harley13";
+		List<Bike> list = bikeRepository.findBikeBybikeName(name);
+		System.out.println(list);
+		System.out.println(list.size() > 0 ? "데이터가 존재합니다." : "데이터가 존재하지 않습니다." );
+	}
+
+	
+	
+	
+	
+	
 	
 	
 	//@Test
