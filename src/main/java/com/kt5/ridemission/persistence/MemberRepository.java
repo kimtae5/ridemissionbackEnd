@@ -1,12 +1,13 @@
 package com.kt5.ridemission.persistence;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import com.kt5.ridemission.model.Member;
 
-public interface RidingRepository extends JpaRepository<Member, String>{
+public interface MemberRepository extends JpaRepository<Member, String>{
 	
-	
+	List<Member> findMemberBylocal(String local);
 
 }

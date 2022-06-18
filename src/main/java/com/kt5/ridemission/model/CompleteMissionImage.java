@@ -1,5 +1,6 @@
 package com.kt5.ridemission.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,20 +19,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "nickName")
-
-
-public class BikeImage extends BaseEntity{
+@ToString(exclude = "mainno")
+public class CompleteMissionImage extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long bIno;
+	private Long cMIno;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Member nickName;
+	private MainMissionBoard mainno;
 	
-	private String bIuuid;
-	private String bikeImage;
-	private String bIpath;
+	private String completeMissionImagePath;
 	
-
 }

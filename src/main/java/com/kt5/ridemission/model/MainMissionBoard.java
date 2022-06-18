@@ -1,11 +1,11 @@
 package com.kt5.ridemission.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,20 +18,19 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "nickName")
+@ToString
 
-
-public class BikeImage extends BaseEntity{
+public class MainMissionBoard extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long bIno;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Member nickName;
-	
-	private String bIuuid;
-	private String bikeImage;
-	private String bIpath;
-	
+	private Long mainno;
 
+	private String missionTitle;
+	private String missionLocation;
+	private Long missionPeople;
+	private LocalDate missonStartDay;
+	private LocalDate missonEndDay;
+	private Long joinCoin;
+	private String missonLeader;
+	private String missonState;
 }
