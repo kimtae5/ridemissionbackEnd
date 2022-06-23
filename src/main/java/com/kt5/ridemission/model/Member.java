@@ -1,5 +1,7 @@
 package com.kt5.ridemission.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -28,4 +30,6 @@ public class Member extends BaseEntity{
 	private String phoneNumber;
 
 	private long coin;
+	
+	private LocalDateTime lastlogindate;
 }

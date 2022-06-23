@@ -17,7 +17,7 @@ public class MemberDTO {
 	private String local;
 	private String phoneNumber;
 	private long coin;
-	
+	private LocalDateTime lastlogindate;
 	
 	private LocalDateTime regdate;
 	private LocalDateTime moddate;

@@ -22,6 +22,7 @@ public interface MemberService {
 				.local(dto.getLocal())
 				.phoneNumber(dto.getPhoneNumber())
 				.coin(dto.getCoin())
+				.lastlogindate(dto.getLastlogindate())
 				.build();
 		
 		return member;
@@ -36,6 +37,7 @@ public interface MemberService {
 				.coin(member.getCoin())
 				.regdate(member.getRegdate())
 				.moddate(member.getModdate())
+				.lastlogindate(member.getLastlogindate())
 				.build();
 		
 		return dto;

@@ -48,15 +48,15 @@ public class MemberServiceImpl implements MemberService {
 			Member member = optional.get();
 			if(BCrypt.checkpw(memberDTO.getPassword(), member.getPassword())) {
 				//로그인에 성공했을 때 로그인 한 시간을 업데이트
-				//ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
-				//LocalDateTime now = nowUTC.withZoneSameInstant(
-				//		ZoneId.of("Asia/Seoul")).toLocalDateTime();
+				ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
+				LocalDateTime now = nowUTC.withZoneSameInstant(
+						ZoneId.of("Asia/Seoul")).toLocalDateTime();
 				Member updateMember = Member.builder()
 						.nickName(member.getNickName())
 						.password(member.getPassword())
 						.local(member.getLocal())
 						.phoneNumber(member.getPhoneNumber())
-						//.lastlogindate(now)// (추후 업그레이드예정)
+						.lastlogindate(now)// (추후 업그레이드예정)
 						.build();
 				memberRepository.save(updateMember);
 				
@@ -74,20 +74,31 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO getMember(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		//닉네임을 가지고 데이터를 찾아옵니다.
+		Optional <Member> optional = 
+				memberRepository.findById(memberDTO.getNickName());
+		//존재하는 닉네임
+		if(optional.isPresent()) {
+			//비밀번호 확인
+			Member member = optional.get();
+			return entityToDto(member);
+		}else {
+			return null;
+		}
 	}
 
 	@Override
 	public String updateMember(MemberDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = dtoToEntity(dto);
+		memberRepository.save(member);
+		return member.getNickName();
 	}
 
 	@Override
 	public String deleteMember(MemberDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = dtoToEntity(dto);
+		memberRepository.delete(member);
+		return member.getNickName();
 	}
 
 }
