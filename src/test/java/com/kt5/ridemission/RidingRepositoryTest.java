@@ -9,14 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.kt5.ridemission.model.Bike;
 import com.kt5.ridemission.model.MainMissionBoard;
 import com.kt5.ridemission.model.Member;
 import com.kt5.ridemission.model.Reply;
-import com.kt5.ridemission.persistence.BikeRepository;
 import com.kt5.ridemission.persistence.MainMissionBoardRepository;
 import com.kt5.ridemission.persistence.MemberRepository;
 import com.kt5.ridemission.persistence.ReplyRepository;
@@ -68,52 +63,7 @@ public class RidingRepositoryTest {
 		System.out.println(list.size() > 0 ? "데이터는 : " + list : "데이터가 존재하지 않습니다." );
 	}
 	
-	@Autowired
-	private BikeRepository bikeRepository;
 	
-	//@Test
-	@Transactional
-	@Commit
-	public void insertBike() {
-		IntStream.rangeClosed(1, 5).forEach(i -> {
-			String nickName = "to" + i + "@kt5.com";
-			
-			Member member = Member.builder().nickName(nickName).build();
-			
-			Bike bike = Bike.builder().nickName(member).bikeName("bikename..."+ i)
-					.bikeDescription("bikeDescription..." + i).bikeImageUrl("bikeImageUrl..."+ i).build();
-			bikeRepository.save(bike);
-		});
-	}
-	
-	//@Test
-	public void testGetBike() {
-		Optional<Bike> optional = bikeRepository.findById(7L);
-		System.out.println(optional.isPresent() ? optional.get() : "존재하지않는 데이터입니다." );
-	}
-	
-	//데이터 수정
-	//@Test
-	public void testUpdateBike() {
-		Bike bike = Bike.builder().bno(2L).bikeName("harley1").bikeImageUrl("harley1.jpg")
-				.bikeDescription("떨림좋음1").build();
-		bikeRepository.save(bike);
-	}
-	
-	//데이터 삭제
-	//@Test
-	public void testDeleteBike() {
-		Bike bike = Bike.builder().bno(6L).build();
-		bikeRepository.delete(bike);
-	}
-	
-	//바이크 이름으로 데이터 조회
-	//@Test
-	public void testFindBike() {
-		String name = "harley13";
-		List<Bike> list = bikeRepository.findBikeBybikeName(name);
-		System.out.println(list.size() > 0 ? "데이터는 : " + list : "데이터가 존재하지 않습니다." );
-	}
 
 	@Autowired
 	private MainMissionBoardRepository mainMissionBoardRepository;

@@ -29,6 +29,12 @@ public class Member extends BaseEntity{
 	
 	private String phoneNumber;
 
+	private String bikeName;
+	
+	private String bikeDescription;
+	
+	private String bikeImageUrl;
+	
 	private long coin;
 	
 	private LocalDateTime lastlogindate;
