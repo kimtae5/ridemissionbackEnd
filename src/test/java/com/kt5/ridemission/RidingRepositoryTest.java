@@ -24,10 +24,12 @@ public class RidingRepositoryTest {
 	//Member에 데이터 삽입
 	//@Test
 	public void insertMember() {
-		IntStream.rangeClosed(1, 1).forEach(i -> {
+		IntStream.rangeClosed(1, 10).forEach(i -> {
 			String password = BCrypt.hashpw("i", BCrypt.gensalt());
-			Member member = Member.builder().nickName("to" + i + "@kt5.com").password(password)
-					.local("지역..." + i).phoneNumber("010" + i).coin(i*1000).build();
+			Member member = Member.builder().nickName("user" + i).password(password)
+					.local("지역..." + i).phoneNumber("010-00" + i + "-00" + i)
+					.coin(i*1000).bikeName(i + "_bike").bikeDescription("good bike..." + i)
+					.bikeImageUrl("bike_" + i + ".png").build();
 			memberRepository.save(member);
 		});
 	};

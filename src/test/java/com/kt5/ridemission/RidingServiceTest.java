@@ -13,11 +13,12 @@ public class RidingServiceTest {
 	MemberService memberService;
 	
 	//회원 가입
-	//@Test
+	@Test
 	public void testInsertMember(){
 	MemberDTO dto =
 	MemberDTO.builder().nickName("kt").password("1").local("서울").phoneNumber("01091888426")
-	.coin(12L).build();
+	.coin(5000).bikeName("20_bike").bikeDescription("good bike...20")
+	.bikeImageUrl("bike_20.png").build();
 	String register = memberService.registerMember(dto);
 	System.out.println(register);
 	}

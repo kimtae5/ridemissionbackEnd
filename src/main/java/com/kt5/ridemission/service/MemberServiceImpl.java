@@ -56,7 +56,11 @@ public class MemberServiceImpl implements MemberService {
 						.password(member.getPassword())
 						.local(member.getLocal())
 						.phoneNumber(member.getPhoneNumber())
-						.lastlogindate(now)// (추후 업그레이드예정)
+						.bikeName(member.getBikeName())
+						.bikeDescription(member.getBikeDescription())
+						.bikeImageUrl(member.getBikeImageUrl())
+						.coin(member.getCoin())
+						.lastlogindate(now)
 						.build();
 				memberRepository.save(updateMember);
 				
