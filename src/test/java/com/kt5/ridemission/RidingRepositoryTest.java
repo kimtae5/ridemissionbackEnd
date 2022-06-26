@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.kt5.ridemission.model.MainMissionBoard;
+import com.kt5.ridemission.model.MissionBoard;
 import com.kt5.ridemission.model.Member;
 import com.kt5.ridemission.model.Reply;
-import com.kt5.ridemission.persistence.MainMissionBoardRepository;
+import com.kt5.ridemission.persistence.MissionBoardRepository;
 import com.kt5.ridemission.persistence.MemberRepository;
 import com.kt5.ridemission.persistence.ReplyRepository;
 
@@ -68,50 +68,50 @@ public class RidingRepositoryTest {
 	
 
 	@Autowired
-	private MainMissionBoardRepository mainMissionBoardRepository;
+	private MissionBoardRepository missionBoardRepository;
 
 	//@Test
 	public void insertMainMissionBoard() {
 		IntStream.rangeClosed(1, 5).forEach(i -> {
-			MainMissionBoard mmb = MainMissionBoard.builder().missionTitle("title..." + i)
+			MissionBoard mmb = MissionBoard.builder().missionTitle("title..." + i)
 					.missionLocation("location" + i).missionPeople((long)i).missonStartDay(LocalDate.now())
 					.missonEndDay(LocalDate.now().plusDays(i)).joinCoin((long)i*1000).missonLeader("leader..." + i)
 					.missonState("state" + i).build();
-			mainMissionBoardRepository.save(mmb);
+			missionBoardRepository.save(mmb);
 		});
 	}
 	
 	//게시판 정보 가져오기 - 수정이나 로그인에서 사용
 	//@Test
 	public void testGetBoard() {
-		Optional<MainMissionBoard> optional = mainMissionBoardRepository.findById(6L);
+		Optional<MissionBoard> optional = missionBoardRepository.findById(6L);
 		System.out.println(optional.isPresent() ? optional.get() : "존재하지않는 데이터입니다." );
 	}
 	
 	//데이터 수정
 	//@Test
 	public void testUpdateBoard() {
-		MainMissionBoard mmb = MainMissionBoard.builder().missionTitle("title...10")
+		MissionBoard mmb = MissionBoard.builder().missionTitle("title...10")
 				.missionLocation("location6").missionPeople(20L)
 				.missonStartDay(LocalDate.now().minusDays(5)).missonEndDay(LocalDate.now()
 						.plusDays(30)).joinCoin(6000L).missonLeader("leader...T")
 				.missonState("good").mainno(1L).build();
-		mainMissionBoardRepository.save(mmb);
+		missionBoardRepository.save(mmb);
 	}
 	
 	//데이터 삭제
 	//@Test
 	public void testDeleteBoard() {
-		MainMissionBoard mmb = MainMissionBoard.builder().mainno(2L).build();
-		mainMissionBoardRepository.delete(mmb);
+		MissionBoard mmb = MissionBoard.builder().mainno(2L).build();
+		missionBoardRepository.delete(mmb);
 	}
 	
 	//미션지역으로 데이터 조회
 	//@Test
 	public void testFindBoardLocation() {
 		String local = "location4";
-		List<MainMissionBoard> list = mainMissionBoardRepository
-				.findMainMissionBoardBymissionLocation(local);
+		List<MissionBoard> list = missionBoardRepository
+				.findMissionBoardBymissionLocation(local);
 		System.out.println(list.size() > 0 ? "데이터는 : " + list : "데이터가 존재하지 않습니다." );
 	}
 	
@@ -123,7 +123,7 @@ public class RidingRepositoryTest {
 		IntStream.rangeClosed(2, 10).forEach(i -> {
 			Long mainno = (long) 1;
 			
-			MainMissionBoard mmb = MainMissionBoard.builder().mainno(mainno).build();
+			MissionBoard mmb = MissionBoard.builder().mainno(mainno).build();
 			
 			Reply reply = Reply.builder().mainno(mmb).replycontent("replycontent..."+ i)
 					.writer("writer..." + i).build();

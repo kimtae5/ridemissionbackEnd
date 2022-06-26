@@ -28,5 +28,5 @@ public class UserToMission extends BaseEntity {
 	private Member nickName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private MainMissionBoard mainno;
+	private MissionBoard mainno;
 }

@@ -27,7 +27,7 @@ public class Reply extends BaseEntity{
 	private Long rno;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	private MainMissionBoard mainno;
+	private MissionBoard mainno;
 	
 	private String replycontent;
 	private String writer;

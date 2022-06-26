@@ -12,7 +12,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 
-public class PageRequestMMBDTO {
+public class PageRequestMBDTO {
 	//페이지 번호 - 1부터 시작
 		private int page;
 		//한 페이지에 보여질 데이터 개수
@@ -23,7 +23,7 @@ public class PageRequestMMBDTO {
 		//private String keyword;
 		
 		//생성자
-		public PageRequestMMBDTO(){
+		public PageRequestMBDTO(){
 			page = 1;
 			size = 10;
 		}
